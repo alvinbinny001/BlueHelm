@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08111c">
+  <title>Sign in | NEURONEX</title>
+  <style>
+    :root { color-scheme: dark; --bg: #08111c; --panel: #101d2b; --line: #25394b; --text: #f4f7fa; --muted: #94a9bb; --accent: #53e0b0; --accent-ink: #062018; --danger: #ff9b91; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px; color: var(--text); background: radial-gradient(circle at 75% 10%, #173544 0, transparent 35%), var(--bg); font: 15px/1.5 "DM Sans", "Segoe UI", sans-serif; }
+    .shell { width: min(100%, 980px); display: grid; grid-template-columns: 1.05fr .95fr; overflow: hidden; border: 1px solid var(--line); border-radius: 20px; background: rgba(16, 29, 43, .94); box-shadow: 0 28px 80px rgba(0,0,0,.35); }
+    .story { padding: 64px 56px; background: linear-gradient(145deg, rgba(31, 83, 86, .58), rgba(11, 25, 38, .2)); }
+    .mark { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: .08em; }
+    .mark-icon { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 11px; color: var(--accent-ink); background: var(--accent); font-size: 22px; }
+    h1 { max-width: 420px; margin: 78px 0 16px; font: 600 clamp(32px, 4vw, 52px)/1.03 Georgia, serif; letter-spacing: -.02em; }
+    .story p { max-width: 380px; color: var(--muted); font-size: 17px; }
+    .signals { display: flex; gap: 24px; margin-top: 46px; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .12em; }
+    .signals strong { display: block; margin-bottom: 4px; color: var(--accent); font-size: 20px; letter-spacing: 0; }
+    .form-panel { padding: 52px 48px; }
+    h2 { margin: 0 0 8px; font-size: 28px; }
+    .subhead { margin: 0 0 28px; color: var(--muted); }
+    .tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; margin-bottom: 24px; border: 1px solid var(--line); border-radius: 10px; background: #0a1622; }
+    .tabs button { border: 0; border-radius: 7px; padding: 10px; color: var(--muted); background: transparent; cursor: pointer; font: inherit; }
+    .tabs button[aria-selected="true"] { color: var(--text); background: #203443; }
+    form { display: grid; gap: 16px; }
+    label { display: grid; gap: 7px; color: #c7d5df; font-size: 13px; }
+    label[hidden] { display: none !important; }
+    input { width: 100%; border: 1px solid var(--line); border-radius: 9px; padding: 13px 14px; color: var(--text); background: #0b1723; font: inherit; outline: none; }
+    input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(83,224,176,.14); }
+    button[type="submit"] { margin-top: 8px; border: 0; border-radius: 9px; padding: 14px; color: var(--accent-ink); background: var(--accent); cursor: pointer; font: 700 15px inherit; }
+    button:disabled { cursor: wait; opacity: .6; }
+    .message { min-height: 24px; margin: 18px 0 0; color: var(--danger); }
+    .fine-print { margin: 26px 0 0; color: var(--muted); font-size: 12px; }
+    @media (max-width: 720px) { body { padding: 0; place-items: stretch; } .shell { grid-template-columns: 1fr; min-height: 100vh; border: 0; border-radius: 0; } .story { padding: 32px 24px 40px; } h1 { margin-top: 48px; font-size: 38px; } .signals { margin-top: 28px; } .form-panel { padding: 34px 24px 44px; } }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="story" aria-label="NEURONEX product introduction">
+      <div class="mark"><span class="mark-icon" aria-hidden="true">N</span><span>NEURONEX</span></div>
+      <h1>Make the next voyage the informed one.</h1>
+      <p>Secure access to freight signals, vessel decisions, port intelligence, and procurement scenarios in one operational workspace.</p>
+      <div class="signals"><span><strong>24/7</strong>market watch</span><span><strong>1 view</strong>voyage context</span></div>
+    </section>
+    <section class="form-panel" aria-labelledby="form-title">
+      <h2 id="form-title">Welcome back</h2>
+      <p class="subhead" id="form-subhead">Sign in to your NEURONEX workspace.</p>
+      <div class="tabs" role="tablist" aria-label="Account access">
+        <button type="button" role="tab" aria-selected="true" data-mode="login">Sign in</button>
+        <button type="button" role="tab" aria-selected="false" data-mode="signup">Create account</button>
+      </div>
+      <form id="auth-form">
+        <label id="name-field" hidden>Full name<input name="full_name" autocomplete="name" minlength="2" maxlength="120"></label>
+        <label>Email address<input name="email" type="email" autocomplete="email" required></label>
+        <label>Password<input name="password" type="password" autocomplete="current-password" minlength="8" required></label>
+        <button type="submit" id="submit-button">Sign in</button>
+      </form>
+      <p class="message" id="message" role="alert" aria-live="polite"></p>
+      <p class="fine-print">Your account data is stored securely on the configured NEURONEX database.</p>
+    </section>
+  </main>
+  <script>
+    (() => {
+      const form = document.querySelector("#auth-form");
+      const nameField = document.querySelector("#name-field");
+      const password = form.elements.password;
+      const message = document.querySelector("#message");
+      const submit = document.querySelector("#submit-button");
+      const title = document.querySelector("#form-title");
+      const subhead = document.querySelector("#form-subhead");
+      let mode = "login";
+
+      function setMode(nextMode) {
+        mode = nextMode;
+        const signup = mode === "signup";
+        nameField.hidden = !signup;
+        nameField.querySelector("input").required = signup;
+        password.autocomplete = signup ? "new-password" : "current-password";
+        title.textContent = signup ? "Create your account" : "Welcome back";
+        subhead.textContent = signup ? "Start your NEURONEX workspace." : "Sign in to your NEURONEX workspace.";
+        submit.textContent = signup ? "Create account" : "Sign in";
+        message.textContent = "";
+        document.querySelectorAll("[role=tab]").forEach((tab) => tab.setAttribute("aria-selected", String(tab.dataset.mode === mode)));
+      }
+
+      document.querySelectorAll("[role=tab]").forEach((tab) => tab.addEventListener("click", () => setMode(tab.dataset.mode)));
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        message.textContent = "";
+        submit.disabled = true;
+        try {
+          const payload = Object.fromEntries(new FormData(form));
+          const response = await fetch(`/api/auth/${mode === "signup" ? "signup" : "login"}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+          const result = await response.json();
+          if (!response.ok) throw new Error(result.detail || "Authentication failed.");
+          localStorage.setItem("neuronex_access_token", result.access_token);
+          localStorage.setItem("neuronex_user", JSON.stringify(result.user));
+          window.location.href = "/#brief";
+        } catch (error) {
+          message.textContent = error.message;
+        } finally {
+          submit.disabled = false;
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

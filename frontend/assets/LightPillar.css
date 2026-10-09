@@ -1,0 +1,906 @@
+/* ============================================================
+   NEURONEX Overview Hero & React Bits <LightPillar /> Styles
+   Professional high-contrast typography, seamless dark viewport,
+   and cinematic volumetric LightPillar ambient background.
+   ============================================================ */
+
+/* ── 1. Global Viewport Dark Canvas ── */
+html,
+body {
+  margin: 0 !important;
+  background-color: #070d0a !important;
+  color: #f1f5f9;
+}
+
+/* Ensure intermediate wrappers do not block or clip the LightPillar canvas */
+#root,
+.site-shell,
+main#top {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  position: relative !important;
+  z-index: 1 !important;
+  overflow: visible !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.paper-noise,
+.workspace-rail {
+  display: none !important;
+}
+
+/* ── 2. LightPillar Canvas Container (Mounted inside body / fixed viewport) ── */
+.light-pillar-fallback {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(7, 13, 10, 0.4);
+  color: #888;
+  font-size: 14px;
+}
+
+.light-pillar-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+#nx-light-pillar-bg {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+  overflow: hidden !important;
+  mix-blend-mode: screen !important;
+  opacity: 0.85 !important;
+}
+
+#nx-light-pillar-bg canvas {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  display: block !important;
+  pointer-events: none !important;
+}
+
+/* ── 2b. Floating Navbar Frosted Glass (Refracts motion background beneath) ── */
+header.topbar {
+  position: fixed !important;
+  top: 14px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 10000 !important;
+  background: rgba(10, 22, 17, 0.65) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  border: 1px solid rgba(83, 224, 176, 0.28) !important;
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.25), 0 0 20px rgba(83, 224, 176, 0.1) !important;
+}
+
+/* ── 3. Overview Hero Section Container (Completely seamless from y=0) ── */
+#dashboard.hero,
+.hero {
+  position: relative !important;
+  margin-top: 0 !important;
+  padding-top: clamp(120px, 14vw, 160px) !important;
+  min-height: 650px !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  overflow: visible !important;
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+  z-index: 2 !important;
+}
+
+#dashboard.hero > *:not(#nx-light-pillar-bg),
+.hero > *:not(#nx-light-pillar-bg) {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+/* ── 4. Hero Headline & Typography (Ultra-Readable & Professional) ── */
+.hero-copy h1,
+.hero h1,
+#dashboard h1 {
+  color: #ffffff !important;
+  font-size: clamp(2.5rem, 5vw, 4.25rem) !important;
+  font-weight: 780 !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.038em !important;
+  background: linear-gradient(180deg, #ffffff 40%, #e2e8f0 75%, #94a3b8 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.9)) !important;
+  margin-bottom: 1.25rem !important;
+}
+
+/* Maintain crisp split-flap tile styling inside heading */
+.hero-copy h1 .hero-split-flap-wrapper,
+.hero-copy h1 .split-flap-text,
+.hero-copy h1 .split-flap-text *,
+#dashboard h1 .split-flap-text,
+#dashboard h1 .split-flap-text * {
+  -webkit-text-fill-color: initial !important;
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.75)) !important;
+}
+
+/* Eyebrow Label: "PROCUREMENT / 01" */
+.hero-copy > span:first-child,
+.hero-eyebrow,
+.hero .eyebrow,
+#dashboard .hero-copy > span:first-child {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.6rem !important;
+  color: #53e0b0 !important;
+  font-size: 0.8rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  margin-bottom: 1rem !important;
+  text-shadow: 0 0 16px rgba(83, 224, 176, 0.45) !important;
+}
+
+/* Eyebrow accent bar */
+.hero-copy > span:first-child::before,
+.hero-eyebrow::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 20px !important;
+  height: 2.5px !important;
+  background: #53e0b0 !important;
+  box-shadow: 0 0 10px #53e0b0 !important;
+  border-radius: 2px !important;
+}
+
+/* Hero lede description copy */
+.hero-lede,
+.hero-copy p,
+#dashboard .hero-lede,
+#dashboard p.hero-lede {
+  color: #cbd5e1 !important;
+  font-size: 1.08rem !important;
+  line-height: 1.68 !important;
+  font-weight: 450 !important;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95) !important;
+  max-width: 520px !important;
+  margin-bottom: 2rem !important;
+}
+
+/* Footnote ("Drawn from 12 market signals") */
+.hero-footnote,
+.hero-copy small,
+.hero-footnote span,
+#dashboard .hero-footnote {
+  color: #94a3b8 !important;
+  font-size: 0.84rem !important;
+  font-weight: 500 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Primary CTA Button ("Build a brief ↗") */
+.hero-actions .primary-button,
+.hero-actions button,
+.hero-actions a.primary-button,
+#dashboard .hero-actions .primary-button {
+  background: #d6ff55 !important;
+  color: #07150a !important;
+  font-weight: 700 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 22px rgba(214, 255, 85, 0.35), 0 0 32px rgba(214, 255, 85, 0.15) !important;
+  transition: all 0.22s ease !important;
+}
+
+.hero-actions .primary-button:hover,
+.hero-actions button:hover,
+#dashboard .hero-actions .primary-button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 30px rgba(214, 255, 85, 0.52), 0 0 44px rgba(214, 255, 85, 0.25) !important;
+}
+
+/* ── 5. Hero Route Drawing: Transparent Frosted Glassmorphism ── */
+.hero-art {
+  height: 450px !important;
+  position: relative !important;
+  border-radius: 22px !important;
+  /* Transparent frosted glass card allowing the dynamic motion background to show through */
+  background: linear-gradient(145deg, rgba(10, 26, 20, 0.35) 0%, rgba(5, 14, 10, 0.16) 100%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(160%) !important;
+  backdrop-filter: blur(12px) saturate(160%) !important;
+  border: 1px solid rgba(83, 224, 176, 0.26) !important;
+  box-shadow: 
+    0 24px 60px -12px rgba(0, 0, 0, 0.65), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 0 24px rgba(83, 224, 176, 0.05),
+    0 0 32px rgba(83, 224, 176, 0.08) !important;
+  overflow: hidden !important;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.hero-art:hover {
+  border-color: rgba(83, 224, 176, 0.4) !important;
+  box-shadow: 
+    0 28px 70px -12px rgba(0, 0, 0, 0.75), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 0 32px rgba(83, 224, 176, 0.08),
+    0 0 44px rgba(83, 224, 176, 0.14) !important;
+}
+
+/* Hide the 404 missing sketch raster image that was causing alt-text and milky screen wash */
+.hero-image-wrap,
+.hero-image-wrap img,
+.hero-image-wash {
+  display: none !important;
+}
+
+/* Ensure floating waypoint notes and neon route path pop crisp and clear on glass */
+.hero-art .floating-note {
+  z-index: 5 !important;
+  background: rgba(6, 15, 11, 0.68) !important;
+  padding: 5px 12px !important;
+  border-radius: 9999px !important;
+  border: 1px solid rgba(83, 224, 176, 0.24) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(8px) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5) !important;
+}
+
+.hero-art .floating-note.note-origin {
+  color: #f1f5f9 !important;
+}
+
+.hero-art .floating-note.note-destination {
+  color: #f1f5f9 !important;
+}
+
+.hero-art .hero-stamp {
+  z-index: 5 !important;
+  background: rgba(8, 20, 15, 0.72) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(8px) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 0 16px rgba(214, 255, 85, 0.15) !important;
+}
+
+/* ============================================================
+   6. NEURONEX Cohesive Cyber-Teal & Obsidian Theme (Full Website)
+   Unified aesthetics matching the luminous LightPillar motion background.
+   Explicitly excludes the dark blue AI / Forecast Dashboard (.ai-layout).
+   ============================================================ */
+
+body:not(.ai-route) .fleetmind-banner,
+.site-shell:not(.ai-layout) .fleetmind-banner {
+  background: radial-gradient(ellipse 85% 65% at 50% 50%, rgba(83, 224, 176, 0.07) 0%, #060d09 80%) !important;
+  border-top: 1px solid rgba(83, 224, 176, 0.18) !important;
+  border-bottom: 1px solid rgba(83, 224, 176, 0.14) !important;
+  margin: 0 !important;
+  padding-top: 4.75rem !important;
+  padding-bottom: 4.75rem !important;
+  padding-left: clamp(1.5rem, 3.5vw, 3rem) !important;
+  padding-right: clamp(1.5rem, 3.5vw, 3rem) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+body:not(.ai-route) .fleetmind-banner-inner,
+.site-shell:not(.ai-layout) .fleetmind-banner-inner {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 2.75rem !important;
+  max-width: 1320px !important;
+  margin: 0 auto !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+body:not(.ai-route) .fleetmind-banner-copy,
+.site-shell:not(.ai-layout) .fleetmind-banner-copy {
+  flex: 0 0 360px !important;
+  max-width: 380px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+
+body:not(.ai-route) .fleetmind-banner-eyebrow,
+.site-shell:not(.ai-layout) .fleetmind-banner-eyebrow {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  margin-bottom: 0.95rem !important;
+  font-size: 0.74rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: #53e0b0 !important;
+  padding: 6px 14px !important;
+  border-radius: 999px !important;
+  background: rgba(83, 224, 176, 0.09) !important;
+  border: 1px solid rgba(83, 224, 176, 0.26) !important;
+  width: fit-content !important;
+  box-shadow: 0 2px 8px rgba(83, 224, 176, 0.08) !important;
+}
+
+body:not(.ai-route) .fleetmind-banner-copy h2,
+.site-shell:not(.ai-layout) .fleetmind-banner-copy h2 {
+  margin: 0 0 0.85rem !important;
+  font-size: clamp(2rem, 2.4vw, 2.45rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.18 !important;
+  letter-spacing: -0.025em !important;
+  background: linear-gradient(135deg, #ffffff 30%, #53e0b0 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+body:not(.ai-route) .fleetmind-banner-copy p,
+.site-shell:not(.ai-layout) .fleetmind-banner-copy p {
+  margin: 0 !important;
+  color: #94a3b8 !important;
+  font-size: 0.93rem !important;
+  line-height: 1.65 !important;
+  font-weight: 400 !important;
+}
+
+body:not(.ai-route) .fleetmind-banner-links,
+.site-shell:not(.ai-layout) .fleetmind-banner-links {
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  gap: 0.95rem !important;
+  flex: 1 !important;
+  align-items: stretch !important;
+}
+
+body:not(.ai-route) .fleetmind-module-card,
+.site-shell:not(.ai-layout) .fleetmind-module-card {
+  min-width: 0 !important;
+  min-height: 165px !important;
+  padding: 1.5rem 1.15rem 1.35rem !important;
+  background: linear-gradient(165deg, rgba(12, 28, 21, 0.72) 0%, rgba(6, 16, 12, 0.84) 100%) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  backdrop-filter: blur(14px) !important;
+  border: 1px solid rgba(83, 224, 176, 0.2) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  transition: transform .25s cubic-bezier(0.16, 1, 0.3, 1), border-color .25s ease, box-shadow .25s ease, background .25s ease !important;
+  text-decoration: none !important;
+}
+
+body:not(.ai-route) .fleetmind-module-card:hover,
+.site-shell:not(.ai-layout) .fleetmind-module-card:hover {
+  transform: translateY(-4px) !important;
+  border-color: rgba(83, 224, 176, 0.65) !important;
+  background: linear-gradient(165deg, rgba(16, 42, 32, 0.85) 0%, rgba(9, 22, 17, 0.92) 100%) !important;
+  box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.55), 0 0 24px rgba(83, 224, 176, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+}
+
+body:not(.ai-route) .fleetmind-module-icon,
+.site-shell:not(.ai-layout) .fleetmind-module-icon {
+  margin-bottom: 0.95rem !important;
+  font-size: 1.65rem !important;
+  line-height: 1 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 12px !important;
+  background: rgba(83, 224, 176, 0.08) !important;
+  border: 1px solid rgba(83, 224, 176, 0.18) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+  transition: transform 0.2s ease, background 0.2s ease !important;
+}
+
+body:not(.ai-route) .fleetmind-module-card:hover .fleetmind-module-icon,
+.site-shell:not(.ai-layout) .fleetmind-module-card:hover .fleetmind-module-icon {
+  transform: scale(1.06) !important;
+  background: rgba(83, 224, 176, 0.15) !important;
+  border-color: rgba(83, 224, 176, 0.35) !important;
+}
+
+body:not(.ai-route) .fleetmind-module-label,
+.site-shell:not(.ai-layout) .fleetmind-module-label {
+  color: #f8fafc !important;
+  font-size: 0.92rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em !important;
+  margin-bottom: 0.35rem !important;
+  display: block !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+  overflow: hidden !important;
+}
+
+body:not(.ai-route) .fleetmind-module-sub,
+.site-shell:not(.ai-layout) .fleetmind-module-sub {
+  color: #8fa6b8 !important;
+  font-size: 0.78rem !important;
+  line-height: 1.45 !important;
+  display: block !important;
+}
+
+body:not(.ai-route) .signal-overview,
+.site-shell:not(.ai-layout) .signal-overview {
+  background: radial-gradient(ellipse 70% 45% at 50% 0%, rgba(14, 165, 233, 0.06) 0%, rgba(7, 13, 10, 0.65) 75%) !important;
+  border-top: none !important;
+  border-bottom: 1px solid rgba(83, 224, 176, 0.08) !important;
+  color: #f1f5f9 !important;
+  margin-top: 0 !important;
+  padding-top: 3.5rem !important;
+  padding-bottom: 4.5rem !important;
+}
+
+body:not(.ai-route) .signal-overview:before,
+.site-shell:not(.ai-layout) .signal-overview:before {
+  display: none !important;
+}
+
+body:not(.ai-route) .brief-section,
+.site-shell:not(.ai-layout) .brief-section {
+  background: radial-gradient(ellipse 70% 45% at 50% 0%, rgba(83, 224, 176, 0.05) 0%, rgba(8, 16, 12, 0.65) 75%) !important;
+  border-top: 1px solid rgba(83, 224, 176, 0.12) !important;
+  border-bottom: 1px solid rgba(83, 224, 176, 0.08) !important;
+  color: #f1f5f9 !important;
+}
+
+body:not(.ai-route) .analysis-section,
+.site-shell:not(.ai-layout) .analysis-section {
+  background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(14, 165, 233, 0.05) 0%, rgba(7, 13, 10, 0.65) 75%) !important;
+  border-top: 1px solid rgba(83, 224, 176, 0.12) !important;
+  border-bottom: 1px solid rgba(83, 224, 176, 0.08) !important;
+  color: #f1f5f9 !important;
+}
+
+body:not(.ai-route) .simulator-section,
+.site-shell:not(.ai-layout) .simulator-section {
+  background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(83, 224, 176, 0.05) 0%, rgba(8, 16, 12, 0.65) 75%) !important;
+  border-top: 1px solid rgba(83, 224, 176, 0.12) !important;
+  border-bottom: 1px solid rgba(83, 224, 176, 0.08) !important;
+  color: #f1f5f9 !important;
+}
+
+body:not(.ai-route) .closing-section,
+.site-shell:not(.ai-layout) .closing-section {
+  background: radial-gradient(ellipse 70% 50% at 50% 100%, rgba(14, 165, 233, 0.06) 0%, rgba(7, 13, 10, 0.7) 80%) !important;
+  border-top: 1px solid rgba(83, 224, 176, 0.12) !important;
+  color: #f1f5f9 !important;
+}
+
+body:not(.ai-route) footer,
+.site-shell:not(.ai-layout) footer {
+  background: #050907 !important;
+  color: #8ea2b4 !important;
+  border-top: 1px solid rgba(83, 224, 176, 0.14) !important;
+  padding: 24px 0 !important;
+}
+
+/* ── 6b. Unified Frosted Obsidian Glass Panels & Cards ── */
+body:not(.ai-route) .glass-panel,
+.site-shell:not(.ai-layout) .glass-panel {
+  background: rgba(10, 24, 18, 0.65) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(160%) !important;
+  backdrop-filter: blur(16px) saturate(160%) !important;
+  border: 1px solid rgba(83, 224, 176, 0.22) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  border-radius: 18px !important;
+  color: #f1f5f9 !important;
+}
+
+body:not(.ai-route) .paper-panel,
+.site-shell:not(.ai-layout) .paper-panel {
+  background: rgba(12, 28, 21, 0.72) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(150%) !important;
+  backdrop-filter: blur(16px) saturate(150%) !important;
+  border: 1px solid rgba(83, 224, 176, 0.24) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  border-radius: 18px !important;
+  color: #f1f5f9 !important;
+}
+
+/* Signal Cards (Market pulse) */
+body:not(.ai-route) .signal-card,
+.site-shell:not(.ai-layout) .signal-card {
+  background: rgba(10, 22, 17, 0.68) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  backdrop-filter: blur(14px) !important;
+  border: 1px solid rgba(83, 224, 176, 0.2) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+  color: #f1f5f9 !important;
+  transition: all 0.22s ease !important;
+}
+
+body:not(.ai-route) .signal-card:hover,
+.site-shell:not(.ai-layout) .signal-card:hover {
+  border-color: rgba(83, 224, 176, 0.45) !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55), 0 0 20px rgba(83, 224, 176, 0.1) !important;
+  transform: translateY(-2px) !important;
+}
+
+body:not(.ai-route) .signal-card-lime,
+.site-shell:not(.ai-layout) .signal-card-lime {
+  background: linear-gradient(145deg, rgba(214, 255, 85, 0.95), rgba(185, 235, 60, 0.9)) !important;
+  border: 1px solid rgba(214, 255, 85, 0.5) !important;
+  box-shadow: 0 12px 36px rgba(214, 255, 85, 0.25) !important;
+  color: #07150a !important;
+}
+
+/* ── 6c. High-Contrast Metallic & Cyber Typography ── */
+body:not(.ai-route) .brief-heading h2,
+body:not(.ai-route) .analysis-topline h2,
+body:not(.ai-route) .simulator-heading h2,
+body:not(.ai-route) .closing-copy h2,
+body:not(.ai-route) .section-intro h2,
+body:not(.ai-route) .port-copy h3,
+body:not(.ai-route) .scenario-result h3,
+.site-shell:not(.ai-layout) .brief-heading h2,
+.site-shell:not(.ai-layout) .analysis-topline h2,
+.site-shell:not(.ai-layout) .simulator-heading h2,
+.site-shell:not(.ai-layout) .closing-copy h2,
+.site-shell:not(.ai-layout) .section-intro h2 {
+  color: #ffffff !important;
+  font-weight: 750 !important;
+  letter-spacing: -0.03em !important;
+  background: linear-gradient(180deg, #ffffff 40%, #e2e8f0 75%, #94a3b8 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+body:not(.ai-route) .panel-kicker,
+body:not(.ai-route) .section-marker,
+body:not(.ai-route) .updated-label,
+body:not(.ai-route) .hand-note,
+body:not(.ai-route) .signal-card-top,
+body:not(.ai-route) .slider-label,
+.site-shell:not(.ai-layout) .panel-kicker,
+.site-shell:not(.ai-layout) .section-marker,
+.site-shell:not(.ai-layout) .updated-label {
+  color: #53e0b0 !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+}
+
+body:not(.ai-route) .brief-heading p,
+body:not(.ai-route) .simulator-heading p,
+body:not(.ai-route) .closing-copy p,
+body:not(.ai-route) .section-intro p,
+body:not(.ai-route) .port-copy p,
+body:not(.ai-route) .methodology,
+.site-shell:not(.ai-layout) .brief-heading p,
+.site-shell:not(.ai-layout) .simulator-heading p,
+.site-shell:not(.ai-layout) .closing-copy p {
+  color: #94a3b8 !important;
+  line-height: 1.62 !important;
+}
+
+/* ── 6d. Form Inputs, Selects & Sliders ── */
+body:not(.ai-route) .brief-form input,
+body:not(.ai-route) .brief-form select,
+body:not(.ai-route) .control-panel input:not([type=range]),
+body:not(.ai-route) .control-panel select,
+.site-shell:not(.ai-layout) .brief-form input,
+.site-shell:not(.ai-layout) .brief-form select {
+  background: rgba(7, 16, 12, 0.8) !important;
+  border: 1px solid rgba(83, 224, 176, 0.25) !important;
+  color: #f1f5f9 !important;
+  border-radius: 10px !important;
+  padding: 10px 14px !important;
+  font-size: 0.92rem !important;
+  transition: border-color 0.2s, box-shadow 0.2s !important;
+}
+
+body:not(.ai-route) .brief-form input:focus,
+body:not(.ai-route) .brief-form select:focus,
+body:not(.ai-route) .control-panel input:not([type=range]):focus,
+body:not(.ai-route) .control-panel select:focus,
+.site-shell:not(.ai-layout) .brief-form input:focus,
+.site-shell:not(.ai-layout) .brief-form select:focus {
+  border-color: #53e0b0 !important;
+  box-shadow: 0 0 0 2px rgba(83, 224, 176, 0.22) !important;
+  outline: none !important;
+}
+
+body:not(.ai-route) .field > span,
+body:not(.ai-route) .field label,
+.site-shell:not(.ai-layout) .field > span {
+  color: #cbd5e1 !important;
+  font-weight: 600 !important;
+}
+
+body:not(.ai-route) .input-with-unit span,
+body:not(.ai-route) .input-with-icon svg {
+  color: #53e0b0 !important;
+}
+
+body:not(.ai-route) .select-wrap select option {
+  background-color: #07150e !important;
+  color: #f1f5f9 !important;
+}
+
+/* Sliders */
+body:not(.ai-route) .simulator-section input[type=range],
+.site-shell:not(.ai-layout) .simulator-section input[type=range] {
+  accent-color: #53e0b0 !important;
+}
+
+body:not(.ai-route) .slider-extremes span {
+  color: #738b9e !important;
+}
+
+/* ── 6e. Brief Preview Card ── */
+body:not(.ai-route) .brief-preview,
+.site-shell:not(.ai-layout) .brief-preview {
+  background: rgba(10, 24, 18, 0.6) !important;
+  border: 1px solid rgba(83, 224, 176, 0.22) !important;
+  border-radius: 16px !important;
+  color: #f1f5f9 !important;
+}
+
+body:not(.ai-route) .preview-note {
+  color: #94a3b8 !important;
+}
+
+body:not(.ai-route) .route-point strong,
+body:not(.ai-route) .route-point-right strong {
+  color: #ffffff !important;
+}
+
+body:not(.ai-route) .route-point span,
+body:not(.ai-route) .route-point-right span {
+  color: #53e0b0 !important;
+}
+
+body:not(.ai-route) .preview-stats strong {
+  color: #ffffff !important;
+}
+
+body:not(.ai-route) .preview-stats small {
+  color: #94a3b8 !important;
+}
+
+/* ── 6f. Vessel Table & Port Panel (#fleet) ── */
+body:not(.ai-route) .vessel-table-wrap,
+.site-shell:not(.ai-layout) .vessel-table-wrap {
+  background: rgba(10, 24, 18, 0.65) !important;
+  border: 1px solid rgba(83, 224, 176, 0.22) !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4) !important;
+}
+
+body:not(.ai-route) .vessel-table-wrap table {
+  color: #f1f5f9 !important;
+  width: 100% !important;
+}
+
+body:not(.ai-route) .vessel-table-wrap thead th,
+body:not(.ai-route) .table-heading th {
+  background: rgba(6, 15, 11, 0.85) !important;
+  color: #53e0b0 !important;
+  border-bottom: 1px solid rgba(83, 224, 176, 0.2) !important;
+  font-weight: 700 !important;
+  padding: 12px 14px !important;
+}
+
+body:not(.ai-route) .vessel-table-wrap tbody td {
+  border-bottom: 1px solid rgba(83, 224, 176, 0.08) !important;
+  color: #cbd5e1 !important;
+  padding: 12px 14px !important;
+}
+
+body:not(.ai-route) .vessel-table-wrap tbody tr:hover td {
+  background: rgba(83, 224, 176, 0.07) !important;
+  color: #ffffff !important;
+}
+
+body:not(.ai-route) .vessel-name strong {
+  color: #ffffff !important;
+}
+
+body:not(.ai-route) .vessel-name span {
+  color: #94a3b8 !important;
+}
+
+body:not(.ai-route) .port-panel,
+.site-shell:not(.ai-layout) .port-panel,
+body:not(.ai-route) .forecast-panel,
+.site-shell:not(.ai-layout) .forecast-panel {
+  background: rgba(10, 24, 18, 0.65) !important;
+  border: 1px solid rgba(83, 224, 176, 0.22) !important;
+  color: #f1f5f9 !important;
+  border-radius: 18px !important;
+}
+
+/* ── 6g. Strategy Simulator Results (#simulator) ── */
+body:not(.ai-route) .scenario-result,
+.site-shell:not(.ai-layout) .scenario-result {
+  background: rgba(12, 28, 21, 0.72) !important;
+  border: 1px solid rgba(83, 224, 176, 0.24) !important;
+  color: #f1f5f9 !important;
+  border-radius: 18px !important;
+}
+
+body:not(.ai-route) .result-grid > div,
+body:not(.ai-route) .result-card {
+  background: rgba(7, 18, 13, 0.65) !important;
+  border: 1px solid rgba(83, 224, 176, 0.18) !important;
+  border-radius: 12px !important;
+  padding: 12px !important;
+}
+
+body:not(.ai-route) .result-grid strong,
+body:not(.ai-route) .result-heading h3 {
+  color: #ffffff !important;
+}
+
+body:not(.ai-route) .result-grid small {
+  color: #94a3b8 !important;
+}
+
+body:not(.ai-route) .result-reason {
+  color: #cbd5e1 !important;
+  border-top: 1px solid rgba(83, 224, 176, 0.15) !important;
+}
+
+body:not(.ai-route) .result-stamp {
+  border: 1.5px solid #53e0b0 !important;
+  color: #53e0b0 !important;
+  box-shadow: 0 0 14px rgba(83, 224, 176, 0.2) !important;
+}
+
+/* ── 6h. Closing Image & Footer ── */
+body:not(.ai-route) .closing-image {
+  border: 1px solid rgba(83, 224, 176, 0.22) !important;
+  border-radius: 18px !important;
+  overflow: hidden !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5) !important;
+}
+
+body:not(.ai-route) .closing-image-copy {
+  background: linear-gradient(to top, rgba(6, 15, 11, 0.9) 0%, transparent 100%) !important;
+  color: #f1f5f9 !important;
+}
+
+/* ── 7. Result CTA Button ("Send to charter desk ↗") & Primary Action Buttons ── */
+.result-cta,
+button.result-cta,
+body:not(.ai-route) .result-cta {
+  background: rgba(18, 38, 28, 0.9) !important;
+  color: #d6ff55 !important;
+  border: 1px solid rgba(214, 255, 85, 0.32) !important;
+  border-radius: 12px !important;
+  padding: 13px 22px !important;
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  letter-spacing: 0.02em !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease, color 0.2s ease, border-color 0.2s ease !important;
+}
+
+.result-cta svg,
+button.result-cta svg,
+body:not(.ai-route) .result-cta svg {
+  stroke: currentColor !important;
+  color: inherit !important;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.2s ease, color 0.2s ease !important;
+}
+
+/* Hover state: perfectly matches Image 3 ("Edit the brief") with vivid electric lime background and crisp dark obsidian text */
+.result-cta:hover,
+.result-cta:focus-visible,
+button.result-cta:hover,
+button.result-cta:focus-visible,
+body:not(.ai-route) .result-cta:hover,
+body:not(.ai-route) .result-cta:focus-visible {
+  background: #d6ff55 !important;
+  color: #101512 !important;
+  border-color: #d6ff55 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 26px rgba(214, 255, 85, 0.45), 0 2px 8px rgba(0, 0, 0, 0.25) !important;
+}
+
+.result-cta:hover svg,
+.result-cta:focus-visible svg,
+button.result-cta:hover svg,
+button.result-cta:focus-visible svg,
+body:not(.ai-route) .result-cta:hover svg,
+body:not(.ai-route) .result-cta:focus-visible svg,
+.result-cta:hover path,
+button.result-cta:hover path {
+  stroke: #101512 !important;
+  color: #101512 !important;
+  transform: translate(2px, -2px) !important;
+}
+
+.result-cta:active,
+button.result-cta:active,
+body:not(.ai-route) .result-cta:active {
+  transform: scale(0.98) translateY(0) !important;
+  box-shadow: 0 2px 8px rgba(214, 255, 85, 0.2) !important;
+}
+
+/* Ensure all primary buttons across the overview page have this same crisp luxury contrast */
+.primary-button,
+a.primary-button,
+button.primary-button,
+.run-button,
+button.run-button,
+body:not(.ai-route) .primary-button,
+body:not(.ai-route) .run-button {
+  background: #d6ff55 !important;
+  color: #101512 !important;
+  border: 1px solid #d6ff55 !important;
+  border-radius: 12px !important;
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  letter-spacing: 0.02em !important;
+  box-shadow: 0 4px 16px rgba(214, 255, 85, 0.25), 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease !important;
+}
+
+.primary-button svg,
+a.primary-button svg,
+button.primary-button svg,
+.run-button svg,
+button.run-button svg {
+  stroke: #101512 !important;
+  color: #101512 !important;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.primary-button:hover,
+a.primary-button:hover,
+button.primary-button:hover,
+.run-button:hover,
+button.run-button:hover,
+body:not(.ai-route) .primary-button:hover,
+body:not(.ai-route) .run-button:hover {
+  background: #deff6b !important;
+  color: #101512 !important;
+  border-color: #deff6b !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 28px rgba(214, 255, 85, 0.48), 0 2px 8px rgba(0, 0, 0, 0.25) !important;
+}
+
+.primary-button:hover svg,
+a.primary-button:hover svg,
+button.primary-button:hover svg,
+.run-button:hover svg,
+button.run-button:hover svg {
+  stroke: #101512 !important;
+  color: #101512 !important;
+  transform: translate(2px, -2px) !important;
+}
+

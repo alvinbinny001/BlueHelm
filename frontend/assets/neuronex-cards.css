@@ -1,0 +1,77 @@
+/* NEURONEX - Risk Card Alignment, Padding & Single-Line Notes */
+
+.ai-risk-card {
+  min-width: 0;
+  padding: 1.45rem 1.35rem 1.25rem !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+.ai-risk-card-top {
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 0.35rem !important;
+}
+
+.ai-risk-card-top > div:first-child {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  padding-right: 0.5rem !important;
+}
+
+.ai-risk-card-top h4 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0 0 0.35rem !important;
+}
+
+/* Speedometer Gauge in Cards: cleanly centered on track */
+.ai-risk-card .ai-gauge-svg {
+  flex-shrink: 0 !important;
+  margin: 0 !important;
+  transform: scale(0.88) translate(-2px, 2px) !important;
+  transform-origin: center right !important;
+  overflow: visible !important;
+}
+
+/* Speedometer Gauge in Overall Risk Badge */
+.ai-overall-risk-badge {
+  padding: 0.85rem 1.35rem !important;
+  overflow: hidden !important;
+}
+
+.ai-overall-risk-badge .ai-gauge-svg {
+  transform: scale(0.88) translateY(1px) !important;
+  transform-origin: center left !important;
+  overflow: visible !important;
+  margin: 0 !important;
+}
+
+/* Single-line Alert & Mitigation Note Lines */
+.ai-risk-alert,
+.ai-risk-mitigation {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  align-items: center !important;
+  display: flex !important;
+  min-width: 0 !important;
+  cursor: default;
+}
+
+.ai-risk-alert span,
+.ai-risk-mitigation span {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  display: inline-block !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+
+.ai-risk-alert svg,
+.ai-risk-mitigation svg {
+  flex-shrink: 0 !important;
+  margin-top: 0 !important;
+}
